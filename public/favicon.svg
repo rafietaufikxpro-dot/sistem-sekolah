@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="32" fill="#152238"/>
+  <!-- Mortarboard cap top (diamond) -->
+  <polygon points="32,12 52,22 32,32 12,22" fill="#E2E8F5"/>
+  <!-- Cap board highlight -->
+  <polygon points="32,12 52,22 32,32 12,22" fill="none" stroke="#2C4573" stroke-width="1"/>
+  <!-- Left side of cap body -->
+  <path d="M14 24 L14 36 Q14 40 20 42 L32 46 L44 42 Q50 40 50 36 L50 24" fill="#22375C"/>
+  <!-- Front face of cap -->
+  <path d="M12 22 L32 32 L52 22 L32 28 Z" fill="#2C4573"/>
+  <!-- Tassel string -->
+  <line x1="50" y1="22" x2="50" y2="36" stroke="#E2E8F5" stroke-width="2" stroke-linecap="round"/>
+  <!-- Tassel ball -->
+  <circle cx="50" cy="38" r="3" fill="#E2E8F5"/>
+  <!-- Tassel fringe -->
+  <line x1="48" y1="41" x2="46" y2="46" stroke="#E2E8F5" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="50" y1="41" x2="50" y2="47" stroke="#E2E8F5" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="52" y1="41" x2="54" y2="46" stroke="#E2E8F5" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

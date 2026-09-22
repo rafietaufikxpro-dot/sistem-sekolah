@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #FBFAF7;
+  --card: #FFFFFF;
+  --ink-900: #1B2430;
+  --ink-500: #6B7686;
+  --border: #E6E9ED;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink-900);
+}

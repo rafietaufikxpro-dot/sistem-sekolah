@@ -1,58 +1,145 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistem Sekolah — Portal Akademik Terpadu
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi web manajemen sekolah berbasis Laravel yang menyediakan akses terpusat bagi Administrator, Guru, dan Siswa untuk mengelola data akademik, nilai, kelas, dan pengajuan administrasi.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Manajemen Data Siswa** — CRUD data siswa lengkap dengan foto profil, NIS, kelas, dan informasi pribadi
+- **Manajemen Data Guru** — CRUD data guru dengan NIP dan mata pelajaran
+- **Manajemen Kelas** — Pengelolaan kelas dan penugasan wali kelas
+- **Nilai Akademik** — Input dan pantau nilai tugas, UTS, dan UAS per semester dan tahun ajaran
+- **Pengajuan Administrasi** — Siswa dapat mengajukan surat/dispensasi secara online; guru memproses persetujuan
+- **Dashboard Role-based** — Tampilan dashboard berbeda untuk Admin, Guru, dan Siswa
+- **Autentikasi** — Login, registrasi mandiri siswa, dan manajemen profil
+- **Alert & Konfirmasi** — Modal konfirmasi sebelum aksi hapus/logout, notifikasi flash otomatis
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Role & Hak Akses
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+| Fitur | Admin | Guru | Siswa |
+|---|---|---|---|
+| Kelola data siswa | ✅ CRUD | ✅ CRUD | ❌ |
+| Lihat detail siswa sendiri | — | — | ✅ |
+| Kelola data guru | ✅ CRUD | ❌ | ❌ |
+| Kelola kelas | ✅ CRUD | ✅ Lihat kelas sendiri | ❌ |
+| Input & edit nilai | ❌ | ✅ (nilai sendiri saja) | ❌ |
+| Lihat nilai | ✅ | ✅ | ✅ (nilai sendiri) |
+| Buat pengajuan | ❌ | ❌ | ✅ |
+| Review pengajuan | ✅ | ✅ | ❌ |
+| Hapus pengajuan | ✅ | ❌ | ❌ |
+| Dashboard statistik | ✅ | ✅ | ✅ |
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Teknologi
 
-## Agentic Development
+- **Backend** — [Laravel 12](https://laravel.com) (PHP 8.2+)
+- **Frontend** — [Blade](https://laravel.com/docs/blade) + [Tailwind CSS v4](https://tailwindcss.com) + [Alpine.js](https://alpinejs.dev)
+- **Database** — MySQL (via Laravel Eloquent ORM)
+- **Auth** — Laravel Breeze (session-based)
+- **Build Tool** — [Vite](https://vitejs.dev)
+- **Font** — Inter + Source Serif 4 (Google Fonts)
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
+## Cara Menjalankan Project
+
+### Prasyarat
+
+- PHP >= 8.2
+- Composer
+- Node.js >= 18 & npm
+- MySQL
+- [Laragon](https://laragon.org) / XAMPP / Herd (opsional)
+
+### Langkah Instalasi
+
+**1. Clone repository**
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/rafietaufikxpro-dot/sistem-sekolah.git
+cd sistem-sekolah
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+**2. Install dependensi PHP**
+```bash
+composer install
+```
 
-## Contributing
+**3. Install dependensi Node.js**
+```bash
+npm install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**4. Salin dan konfigurasi environment**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Code of Conduct
+Edit file `.env` sesuaikan koneksi database:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=sistem_sekolah
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**5. Jalankan migrasi dan seeder**
+```bash
+php artisan migrate --seed
+```
 
-## Security Vulnerabilities
+**6. Buat symlink storage**
+```bash
+php artisan storage:link
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**7. Build asset frontend**
+```bash
+npm run build
+```
 
-## License
+Atau untuk mode development dengan hot reload:
+```bash
+npm run dev
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**8. Jalankan server**
+```bash
+php artisan serve
+```
+
+Akses aplikasi di `http://localhost:8000`
+
+### Akun Default (Seeder)
+
+| Role | Email | Password |
+|---|---|---|
+| Admin | admin@sekolah.sch.id | password |
+| Guru | guru@sekolah.sch.id | password |
+| Siswa | siswa@sekolah.sch.id | password |
+
+---
+
+## Struktur Role Utama
+
+```
+app/
+├── Http/
+│   ├── Controllers/         # SiswaController, GuruController, NilaiController, dll
+│   ├── Middleware/          # EnsureCanReviewPengajuan
+│   └── Requests/            # Form Request validation
+├── Models/                  # User, Siswa, Guru, Kelas, Nilai, Pengajuan, Role
+└── Policies/                # Authorization per model
+```
+
+---
+
+## Lisensi
+
+Project ini dibuat untuk keperluan pembelajaran. Bebas digunakan dan dimodifikasi.

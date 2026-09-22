@@ -14,3 +14,7 @@ body {
   background-color: var(--paper);
   color: var(--ink-900);
 }
+
+[x-cloak] {
+  display: none !important;
+}
